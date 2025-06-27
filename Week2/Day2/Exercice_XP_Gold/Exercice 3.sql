@@ -51,4 +51,7 @@ select c.last_name AS prenom , c.first_name as nome ,
        i.name as nom_article from Achats a 
 	   join customers c on a.customer_id=c.id
 	   join items i on a.item_id=i.id
- 
+
+
+ INSERT INTO Achats (customer_id, item_id, quantity_purchased)
+VALUES (3, NULL, 1);
