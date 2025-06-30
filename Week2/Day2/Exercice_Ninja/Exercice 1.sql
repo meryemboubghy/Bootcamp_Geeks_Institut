@@ -17,3 +17,8 @@ SELECT
 FROM Achats a
 JOIN customers c ON a.customer_id = c.id;
 
+-- 5 :
+select c.first_name , c.last_name ,a.*
+from Achats a 
+join customers c on a.customer_id=c.id
+where c.first_name!= 'Scott'
