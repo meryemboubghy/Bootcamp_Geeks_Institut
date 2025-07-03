@@ -1,6 +1,6 @@
 const prompt = require("prompt-sync")();
 
-// let input = parseInt(prompt("Veulliez entrer un nombre :"));
+let input = parseInt(prompt("Veulliez entrer un nombre :"));
 // //Verification du type
 console.log("Type avant conversin ", typeof input);
 // Convertir en nombre :
