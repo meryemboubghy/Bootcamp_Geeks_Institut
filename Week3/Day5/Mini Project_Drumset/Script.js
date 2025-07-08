@@ -3,7 +3,7 @@ function playSound(key) {
     `audio[data-key="${key.toUpperCase()}"]`
   );
   const keyDiv = document.querySelector(
-    `.container[data-key="${key.toUpperCase()}"]`
+    `.key[data-key="${key.toUpperCase()}"]`
   );
   if (!audio) return;
 
@@ -18,7 +18,7 @@ document.addEventListener("keydown", (e) => {
   playSound(e.key);
 });
 
-document.querySelectorAll(".container").forEach((key) => {
+document.querySelectorAll(".key").forEach((key) => {
   key.addEventListener("click", () => {
     playSound(key.getAttribute("data-key"));
   });
