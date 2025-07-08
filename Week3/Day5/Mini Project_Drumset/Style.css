@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: url("nainoa-shizuru-NcdG9mK3PBY-unsplash-scaled-e1689184181503-1170x614.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.key {
+  border: 3px solid yellow;
+  border-radius: 5px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  width: 100px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: none;
+}
+
+.key kbd {
+  display: block;
+  font-size: 2rem;
+}
+.key:hover {
+  transform: scale(1.07);
+}
+.key .sound {
+  font-size: 1rem;
+  color: gold;
+}
+
+.key.playing {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 5px yellow;
+}
