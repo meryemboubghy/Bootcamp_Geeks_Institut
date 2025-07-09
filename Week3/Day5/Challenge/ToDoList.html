@@ -1,31 +1,172 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo list</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #ff4e50);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      form {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        width: 250px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #b3d4fc;
+        color: #0077ff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+      }
+
+      .listTasks {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .task-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        padding: 5px 0;
+        font-size: 16px;
+      }
+
+      .task-item span {
+        flex-grow: 1;
+        margin-left: 5px;
+        text-align: left;
+      }
+
+      .completed {
+        text-decoration: line-through;
+        color: red;
+      }
+
+      .remove-btn {
+        background-color: red;
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 2px 6px;
+        cursor: pointer;
+        margin-right: 5px;
+        border-radius: 3px;
+      }
+
+      .clear-btn {
+        margin-top: 10px;
+        text-align: right;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    </style>
   </head>
   <body>
-    <form id="form">
-      <h1>TO-DO-LIST</h1>
-      <input type="text" id="txt" placeholder="Enter a task" />
-      <button type="submit">Valider</button>
-      <div class="listTasks"></div>
-    </form>
+    <h1>TO-DO LIST</h1>
+    <div>
+      <form id="form">
+        <input type="text" id="txt" placeholder="new task" />
+        <button type="submit">ADD</button>
+      </form>
+    </div>
+    <div class="listTasks" id="listTasks"></div>
+    <div class="clear-btn" onclick="deleteTask()">Clear</div>
 
     <script>
       const tasks = [];
-      const input = document.getElementById("txt");
       const form = document.getElementById("form");
-      const listDiv = document.querySelector(".listTasks");
+      const input = document.getElementById("txt");
+      const listDiv = document.getElementById("listTasks");
+
       function addTask(event) {
         event.preventDefault();
-        const list = input.value.trim();
-        if (list === "") {
-          alert("Veuillez rempler !");
+        const taskText = input.value.trim();
+        if (taskText === "") {
+          alert("Veuillez remplir !");
           return;
         }
+        const task = { text: taskText, done: false };
+        tasks.push(task);
+        input.value = "";
+        displayTasks();
       }
+
+      function displayTasks() {
+        listDiv.innerHTML = "";
+        tasks.forEach((task, index) => {
+          const taskElement = document.createElement("div");
+          taskElement.className = "task-item";
+
+          const removeBtn = document.createElement("button");
+          removeBtn.className = "remove-btn";
+          removeBtn.textContent = "✖";
+          removeBtn.onclick = () => {
+            tasks.splice(index, 1);
+            displayTasks();
+          };
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = task.done;
+          checkbox.onchange = () => {
+            task.done = checkbox.checked;
+            displayTasks();
+          };
+
+          const text = document.createElement("span");
+          text.textContent = task.text;
+          if (task.done) {
+            text.classList.add("completed");
+          }
+
+          taskElement.appendChild(removeBtn);
+          taskElement.appendChild(checkbox);
+          taskElement.appendChild(text);
+
+          listDiv.appendChild(taskElement);
+        });
+      }
+
+      function deleteTask() {
+        tasks.length = 0;
+        displayTasks();
+      }
+
+      form.addEventListener("submit", addTask);
     </script>
   </body>
 </html>
