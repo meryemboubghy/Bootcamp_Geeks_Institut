@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validation Email</title>
+  </head>
+  <body>
+    <form id="emailForm">
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="Entrez votre email"
+        required
+      />
+      <button type="submit" onclick="validationSonsRegex()">Submit</button>
+      <p id="message" style="color: red"></p>
+    </form>
+
+    <script>
+      // function ValidationEmail() {
+      //   const InputEmail = document.getElementById("emailInput").value;
+      //   const EmailVrf = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      //   return EmailVrf.test(InputEmail);
+      // }
+      // document
+      //   .getElementById("emailForm")
+      //   .addEventListener("submit", function (e) {
+      //     e.preventDefault();
+      //     const message = document.getElementById("message");
+      //     if (ValidationEmail()) {
+      //       message.style.color = "green";
+      //       message.textContent = "Email valide ";
+      //     } else {
+      //       message.style.color = "red";
+      //       message.textContent = "Email invalide ";
+      //     }
+      //   });
+
+      //Sans regex :
+      const emailInput = document.getElementById("emailInput");
+      const message = document.getElementById("message");
+      document
+        .getElementById("emailForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          if (emailInput.checkValidity()) {
+            message.style.color = "green";
+            message.textContent = "Email valide ";
+          } else {
+            message.style.color = "red";
+            message.textContent = "Email invalide ";
+          }
+        });
+    </script>
+  </body>
+</html>
