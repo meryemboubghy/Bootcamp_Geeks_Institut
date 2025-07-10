@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenue</title>
+  </head>
+  <body>
+    <nav>
+      <style>
+        nav {
+          background-color: #333;
+          color: white;
+          padding: 1em;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .UserInfos {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .UserInfos img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      </style>
+      <div>Mon site Web</div>
+    </nav>
+
+    <script>
+      function auto_invocable(userName) {
+        const nav = document.querySelector("nav");
+        const div = document.createElement("div");
+        div.className = "UserInfos";
+
+        const img = document.createElement("img");
+        img.src = "FACE3.jpg";
+        img.alt = "Photo de Profile";
+
+        const name = document.createElement("span");
+        name.textContent = userName;
+
+        div.appendChild(img);
+        div.appendChild(name);
+        nav.appendChild(div);
+      }
+      auto_invocable("meryem");
+    </script>
+  </body>
+</html>
