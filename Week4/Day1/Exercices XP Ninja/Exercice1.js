@@ -15,3 +15,6 @@ function mergeWords(string) {
   };
 }
 console.log(mergeWords("There")("is")("no")("spoon.")());
+//
+const mergeWords = (string) => (nextString) =>
+  nextString === undefined ? string : mergeWords(string + " " + nextString);
