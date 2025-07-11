@@ -94,7 +94,7 @@ def main():
     if hits == NUM_SHIPS:
         print("🎉 Congratulations! ")
     else:
-        print("😢 Bad Triiiiiiiipp Sahbi Nod Tchelal Ydk Fiiih :-< .")
+        print("😢 Bad Triiiiiiiipp Sahbi  :-< .")
     print("\nFinal Board:")
     print_board(board, reveal=True)
 

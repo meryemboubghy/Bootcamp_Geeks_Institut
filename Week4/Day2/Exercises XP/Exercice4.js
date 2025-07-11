@@ -10,3 +10,15 @@ const users = [
 
 const welcomeStudents = users.map((user) => `Welcome ${user.firstName}`);
 console.log(welcomeStudents);
+//2 :
+
+const FullStackRzsidents = users.filter(
+  (user) => user.role === `Full Stack Resident`
+);
+console.log(FullStackRzsidents);
+
+// Bonus :
+const fullStackLastNames = users
+  .filter((user) => user.role === `Full Stack Resident`)
+  .map((user) => user.lastName);
+console.log(fullStackLastNames);
