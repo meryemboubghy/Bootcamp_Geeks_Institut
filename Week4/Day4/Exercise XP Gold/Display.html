@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Afficher les données</title>
+  </head>
+  <body>
+    <h1>Données reçues :</h1>
+    <section id="dataSection">
+      <!-- Les données seront affichées ici -->
+    </section>
+
+    <script>
+      // Fonction pour lire les paramètres d'URL
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        const lastname = params.get("lastname");
+
+        return { name, lastname };
+      }
+
+      // Afficher les données dans la section
+      const { name, lastname } = getQueryParams();
+      const section = document.getElementById("dataSection");
+
+      if (name && lastname) {
+        section.innerHTML = `<p>Nom : <strong>${name}</strong></p>
+                           <p>Prénom : <strong>${lastname}</strong></p>`;
+      } else {
+        section.innerHTML = `<p>Aucune donnée reçue.</p>`;
+      }
+    </script>
+  </body>
+</html>
