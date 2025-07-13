@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote generator</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        margin: 50px;
+      }
+      .Generate_btn {
+        border-color: aqua;
+        border-radius: 5px;
+        background-color: rgb(3, 20, 14);
+        color: white;
+        padding: 10px 20px;
+        font-size: 20px;
+      }
+      #Generate_section {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 600px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        min-height: 100px;
+      }
+      #input_author
+      {
+        padding: 10px 10px;
+        
+      }
+      #input_quote
+      {
+       padding: 10px 10px;
+
+      }
+    </style>
+  </head>
+  <body>
+    <section id="Generate_section"></section>
+    <button class="Generate_btn" onclick="generateQuote()">Generate Quote</button>
+    <h2>Add a New Quote</h2>
+  <form id="myform">
+      <input type="text" placeholder="Enter the Author" id="input_author" />
+      </br></br>
+      <textarea placeholder="Enter the Quote" id="input_quote"> </textarea>
+      </br>
+      </br>
+      <button class="Generate_btn" type="submit" >Add Quote</button>
+  </form>
+    <script src="Script.js"></script>
+  </body>
+</html>
