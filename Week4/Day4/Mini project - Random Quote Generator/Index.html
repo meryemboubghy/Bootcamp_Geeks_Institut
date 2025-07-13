@@ -17,6 +17,7 @@
         color: white;
         padding: 10px 20px;
         font-size: 20px;
+         margin: 5px;
       }
       #Generate_section {
         margin: 20px auto;
@@ -26,8 +27,8 @@
         border-radius: 5px;
         min-height: 100px;
       }
-      #input_author
-      {
+      /* #input_author */
+      /* {
         padding: 10px 10px;
         
       }
@@ -35,12 +36,29 @@
       {
        padding: 10px 10px;
 
-      }
+      } */
+      textarea, input {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .Generate_btn:hover {
+  background-color: teal;      /* Couleur au survol */
+  transform: scale(1.05);      /* Légère augmentation */
+}
     </style>
   </head>
   <body>
+      <h1>Quote Generator</h1>
     <section id="Generate_section"></section>
     <button class="Generate_btn" onclick="generateQuote()">Generate Quote</button>
+   
+   <!-- Boutons supplementaire  -->
+      <button class="Generate_btn" onclick="countCharacters(true)">Char (with spaces)</button>
+  <button class="Generate_btn" onclick="countCharacters(false)">Char (no spaces)</button>
+  <button class="Generate_btn" onclick="countWords()">Word Count</button>
+  <button class="Generate_btn" onclick="likeQuote()">❤️ Like</button>
+   
     <h2>Add a New Quote</h2>
   <form id="myform">
       <input type="text" placeholder="Enter the Author" id="input_author" />
@@ -50,6 +68,17 @@
       </br>
       <button class="Generate_btn" type="submit" >Add Quote</button>
   </form>
+  <h2>Filter Quotes by Author</h2>
+<form id="filterForm">
+  <input type="text" id="filterAuthor" placeholder="Enter author's name" />
+  <button type="submit" class="Generate_btn">Filter</button>
+</form>
+
+<!-- Zone d'affichage pour navigation -->
+<div id="filteredQuoteSection"></div>
+<button id="prevBtn" class="Generate_btn" style="display: none;">Previous</button>
+<button id="nextBtn" class="Generate_btn" style="display: none;">Next</button>
+
     <script src="Script.js"></script>
   </body>
 </html>
