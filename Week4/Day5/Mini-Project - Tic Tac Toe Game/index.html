@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tic Tac Toe Game</title>
+  </head>
+  <body class="bg-blue-600 min-h-screen text-white text-center p-6">
+    <h1 class="text-4xl font-bold mb-6 text-white-700">Tic Tac Toe</h1>
+    <div class="mb-4">
+      <span class="text-lg">Choisissez votre symbole :</span>
+      <button
+        onclick="chooseSymbol('X')"
+        class="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+      >
+        X
+      </button>
+      <button
+        onclick="chooseSymbol('O')"
+        class="mx-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
+      >
+        O
+      </button>
+    </div>
+    <div class="mb-6">
+      <span class="text-lg">Niveau :</span>
+      <button
+        onclick="setDifficulty('easy')"
+        class="mx-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+      >
+        Facile
+      </button>
+      <button
+        onclick="setDifficulty('hard')"
+        class="mx-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+      >
+        Difficile
+      </button>
+    </div>
+    <div class="grid grid-cols-3 gap-2 w-64 mx-auto mb-6">
+      <!-- 9 cases -->
+      <div
+        id="cell-0"
+        onclick="handleMove(0)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-1"
+        onclick="handleMove(1)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-2"
+        onclick="handleMove(2)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-3"
+        onclick="handleMove(3)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-4"
+        onclick="handleMove(4)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-5"
+        onclick="handleMove(5)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-6"
+        onclick="handleMove(6)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-7"
+        onclick="handleMove(7)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+      <div
+        id="cell-8"
+        onclick="handleMove(8)"
+        class="cell bg-white border-2 border-gray-400 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+      ></div>
+    </div>
+    <div id="result" class="text-2xl font-semibold text-white-800 mb-4"></div>
+
+    <!-- Bouton rejouer -->
+    <button
+      onclick="resetGame()"
+      class="hidden mt-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-800"
+      id="resetBtn"
+    >
+      Rejouer
+    </button>
+    <script src="Script.js"></script>
+  </body>
+</html>
