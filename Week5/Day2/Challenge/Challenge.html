@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIF Search</title>
+  </head>
+  <body>
+    <form id="maForm">
+      <input
+        type="text"
+        id="monInput"
+        placeholder="Entrez un gif à rechercher"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+    <button id="deletAllBtn">DELETE ALL</button>
+    <div id="gifContainer" style="display: flex; flex-wrap: wrap"></div>
+
+    <script>
+      const apiKey = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+      const searchForm = document.getElementById("maForm");
+      const searchInput = document.getElementById("monInput");
+      const gifContainer = document.getElementById("gifContainer");
+      const deletAllBtn = document.getElementById("deletAllBtn");
+
+      //  Fonction pour créer et afficher un élément GIF
+      function createGifElement(gif) {
+        const gifDiv = document.createElement("div");
+        gifDiv.style.margin = "10px";
+        gifDiv.style.position = "relative";
+
+        const img = document.createElement("img");
+        img.src = gif.images.original.url;
+        img.alt = gif.title || "GIF";
+        img.style.width = "200px";
+        img.style.height = "200px";
+        img.style.display = "block";
+
+        const btn = document.createElement("button");
+        btn.textContent = "Delete";
+        btn.style.position = "absolute";
+        btn.style.bottom = "0";
+        btn.style.left = "0";
+        btn.style.width = "100%";
+        btn.onclick = () => {
+          gifDiv.remove(); // Supprime le gif affiché
+        };
+
+        gifDiv.appendChild(img);
+        gifDiv.appendChild(btn);
+        gifContainer.appendChild(gifDiv);
+      }
+
+      //  Gérer le formulaire de recherche
+      searchForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm === "") return;
+
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${encodeURIComponent(
+          searchTerm
+        )}&limit=10`;
+
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          const gifs = data.data;
+
+          if (gifs.length > 0) {
+            const randomIndex = Math.floor(Math.random() * gifs.length);
+            const gif = gifs[randomIndex];
+            createGifElement(gif);
+          } else {
+            console.error("Aucun GIF trouvé pour ce mot.");
+          }
+        } catch (error) {
+          console.error("Erreur lors de la récupération des GIFs:", error);
+        }
+
+        searchInput.value = ""; // Vider le champ
+      });
+
+      //  Bouton pour supprimer tous les GIFs
+      deletAllBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        gifContainer.innerHTML = ""; // Vide tout
+      });
+    </script>
+  </body>
+</html>
