@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIF aléatoir</title>
+  </head>
+  <body>
+    <button id="loadGif">Afficher un GIF</button>
+    <div id="gifContainer" style="border: 1 solid brown"></div>
+
+    <script>
+      const apiKey = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+      document.getElementById("loadGif").addEventListener("click", async () => {
+        try {
+          const response = await fetch(
+            `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
+          );
+          if (!response.ok) {
+            throw new Error("Erreur lors du chargement du GIF");
+          }
+          const data = await response.json();
+          const gifUrl = data.data.images.original.url;
+          const img = document.createElement("img");
+          img.src = gifUrl;
+          const container = document.getElementById("gifContainer");
+          container.innerHTML = ""; // vider l'ancien gif
+          container.appendChild(img);
+        } catch (error) {
+          console.error("Erreur :", error);
+        }
+      });
+    </script>
+  </body>
+</html>
