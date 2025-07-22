@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <label> latitude de la ville 1 :</label>
+      <input type="text" id="lat1" />
+      <input type="text" id="long1" />
+      <br />
+      <br />
+      <label> latitude de la ville 2 :</label>
+      <input type="text" id="lat2" />
+      <input type="text" id="long2" />
+      <br />
+      <button type="submit" id="btn_Submit">Soumettre</button>
+      <br />
+      <div id="result"></div>
+    </form>
+    <script>
+      const form = document.getElementById("form");
+      const lat1 = document.getElementById("lat1");
+      const long1 = document.getElementById("long1");
+      const lat2 = document.getElementById("lat2");
+      const long2 = document.getElementById("long2");
+      const btnSubmit = document.getElementById("btn_Submit");
+      const results = document.getElementById("result");
+      const apiUrl =
+        "https://api.sunrise-sunset.org/json?lat=LATITUDE&lng=LONGITUDE&formatted=0";
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const lat1Value = lat1.value;
+        const long1Value = long1.value;
+        const lat2Value = lat2.value;
+        const long2Value = long2.value;
+        try {
+          const url1 = apiUrl
+            .replace("LATITUDE", lat1Value)
+            .replace("LONGITUDE", long1Value);
+          const url2 = apiUrl
+            .replace("LATITUDE", lat2Value)
+            .replace("LONGITUDE", long2Value);
+
+          const [response1, response2] = await Promise.all([
+            fetch(url1),
+            fetch(url2),
+          ]);
+          // convert the responses to JSON
+          const data1 = await response1.json();
+          const data2 = await response2.json();
+          // Extraction des heures de lever et coucher du soleil
+          const sunrise1 = new Date(data1.results.sunrise);
+          const sunrise2 = new Date(data2.results.sunrise);
+
+          results.innerHTML = `
+               <h3>Résultats:</h3>
+            <p>Ville 1 (${lat1.value}, ${
+            long1.value
+          }) - Lever du soleil: ${sunrise1.toLocaleTimeString()}</p>
+           <p>Ville 2 (${lat2.value}, ${
+            long2.value
+          }) - Lever du soleil: ${sunrise2.toLocaleTimeString()}</p>
+            <p>Différence: ${Math.abs(
+              (sunrise1 - sunrise2) / 60000
+            )} minutes</p>
+          `;
+        } catch (error) {
+          results.innerHTML = `
+            <p>Erreur lors de la récupération des données: ${error.message}</p>
+          `;
+        }
+      });
+    </script>
+  </body>
+</html>
