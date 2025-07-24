@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <title>POKEDEX</title>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="logo_container">
+      <img src="logo.png" alt="logo" class="logo" />
+    </div>
+    <div class="instructions">
+      <h2>How to use :</h2>
+      <p><b>1-</b> Press the <b>green</b> button to get a random Pokémon</p>
+      <p>
+        <b>2-</b> Press the <b>left</b> and <b>right</b> buttons to see previous
+        and next Pokémon.
+      </p>
+    </div>
+    <div>
+      <img
+        src="pokedex.png"
+        alt="pokedex"
+        width="900"
+        height="800"
+        style="margin-left: 500px"
+      />
+    </div>
+    <button id="Btn_Find" onclick="getData()"></button>
+    <div class="btn_left_right">
+      <button
+        id="Btn_Left"
+        class="cross-square square-center-left"
+        onclick="getPrevious()"
+      ></button>
+      <button
+        id="Btn_Right"
+        class="cross-square square-center-right"
+        onclick="getNext()"
+      ></button>
+    </div>
+    <img id="pokemon_Image" hidden="true" />
+    <div id="box" class="">
+      <h1 id="name"></h1>
+      <p id="id"></p>
+      <p id="height"></p>
+      <p id="weight"></p>
+      <p id=""></p>
+      <p id="type"></p>
+      <p id="load"></p>
+    </div>
+    <script src="Script.js"></script>
+  </body>
+</html>

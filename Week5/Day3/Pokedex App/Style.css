@@ -1,0 +1,85 @@
+.img-container {
+  text-align: center;
+
+  margin-top: -150px;
+}
+#logo-container {
+  text-align: left;
+}
+h1 {
+  color: black;
+  font-size: 30px;
+}
+
+#pokemon_Image {
+  width: 200px;
+  height: 200px;
+  margin-top: -550px;
+  margin-left: 800px;
+}
+#Btn_Find {
+  background-color: transparent;
+  border-radius: 50%;
+  text-align: center;
+  height: 80px;
+  width: 80px;
+  font-size: 15px;
+  position: absolute;
+  margin-top: -193px;
+  margin-left: 1235px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid yellow;
+  outline: none;
+}
+#box {
+  margin-top: -500px;
+  height: 250px;
+  width: 300px;
+  text-align: center;
+  color: black;
+  position: absolute;
+  margin-left: 800px;
+  margin-top: 40px;
+  width: 300px;
+}
+#box h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  margin-top: 45px;
+}
+#box p {
+  font-size: 20px;
+  color: black;
+  margin-top: 10px;
+}
+.btn_left_right {
+  position: absolute;
+  margin-top: -179px;
+  margin-left: 645px;
+  cursor: pointer;
+}
+#Btn_Right,
+#Btn_Left {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 3px solid yellow;
+  font-size: 20px;
+}
+#next {
+  cursor: pointer;
+  width: 45px;
+  height: 25px;
+  margin-left: 8px;
+  background-color: transparent;
+  outline: none;
+}
+
+.instructions {
+  position: absolute;
+  margin-left: 950px;
+  margin-top: -100px;
+}
