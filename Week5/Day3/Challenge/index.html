@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Currency Converter</title>
+     <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    select, input, button {
+      padding: 10px;
+      margin: 10px;
+    }
+    #resultat {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div
+      class="w-[800px] h-[600px] bg-cover bg-center rounded-lg shadow-lg relative"
+      style="background-image: url('changer.jpg') "
+    >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-6 space-y-4"
+      >
+        <h1 class="text-3xl font-bold mb-4">Currency Converter</h1>
+        <h2 class="text-xl italic text-gray-200">From :</h2>
+        <select
+          name="devise"
+          id="deviseId"
+          class="w-full mt-1 mb-2 p-2 rounded-lg text-black bg-white shadow-md focus:outline-none"
+        ></select>
+        <h2 class="text-xl italic text-gray-200 mt-4">To :</h2>
+        <select
+          name="devise2"
+          id="deviseId2"
+          class="w-full mt-1 mb-2 p-2 rounded-lg text-black bg-white shadow-md focus:outline-none"
+        ></select>
+        <h2 class="text-xl italic text-gray-200 mt-4">Amount :</h2>
+        <div  class="flex items-center space-x-2 mt-2">
+            <img
+    src="change.png"
+    id="changerBtn"
+    alt="Inverser les devises"
+    class="cursor-pointer w-15 h-14 transition-transform hover:rotate-180"
+    title="Inverser les devises"
+  />
+          <input
+            type="number"
+            id="amountId"
+            class="p-2 rounded border border-gray-300 w-full text-black bg-white shadow-md focus:outline-none"
+            placeholder="Enter amount to convert"
+          />
+          <button
+            id="convertBtn"
+            class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded" onclick="convertirDevise()"
+          >
+            Convert
+          </button>
+          </div>
+          <div id="resultat" class="mt-4 text-lg font-semibold text-center"></div>
+        </div>
+      </div>
+    </div>
+ <script src="Script.js"></script>
+  </body>
+</html>
